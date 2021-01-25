@@ -1,0 +1,39 @@
+#!/bin/bash
+targetProject=$1
+
+if [ -z "$targetProject" ];then
+  echo "target project is not provided: use build-leaning.sh ***. exit."
+  exit 1
+fi
+targetProject="learning-$1"
+projectPath="/home/sky/site/$targetProject"
+
+if [ ! -d "$projectPath" ];then
+  echo "$targetProject ($projectPath) not found, exit"
+  exit 1
+fi
+
+cd $projectPath
+
+if [ -d "node_modules" ];then
+  echo 'Find directoy "node_modules"'
+else
+  echo 'Directoy "node_modules" not found, create soft link'
+  ln -s ../node_modules .
+fi
+
+if [ ! -d "themes" ];then
+  echo "No themes directory, create it"
+  mkdir themes
+fi
+
+if [ -d "themes/docsy" ];then
+  echo 'Find directoy "themes/docsy"'
+else
+  echo 'Directoy "themes/docsy" not found, create soft link'
+  cd themes
+  ln -s ../../docsy .
+fi
+
+
+
