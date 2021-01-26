@@ -1,6 +1,11 @@
 #!/bin/bash
-workPath=$(dirname $(readlink -f $0))
+#!/bin/bash
+workPath=$(dirname $0)
+cd $workPath
+echo "work path is $workPath"
+workPath=$(pwd)
 targetProject=$1
+echo "change work path to abstract $workPath"
 echo "cd $workPath"
 cd $workPath
 

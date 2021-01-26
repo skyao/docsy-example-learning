@@ -1,6 +1,10 @@
 #!/bin/bash
-workPath=$(dirname $(readlink -f $0))
+workPath=$(dirname $0)
+cd $workPath
+echo "work path is $workPath"
+workPath=$(pwd)
 targetProject=$1
+echo "change work path to abstract $workPath"
 echo "cd $workPath"
 cd $workPath
 
@@ -16,19 +20,20 @@ if [ -d "$projectPath" ];then
   exit 1
 fi
 
-git clone git://github.com/skyao/$targetProject.git
+echo "Begin to clone git@github.com:skyao/$targetProject.git"
+git clone git@github.com:skyao/$targetProject.git
 if [ $? -ne 0 ]; then
     echo "Fail to clone project $targetProject, exit"
     exit 1
 fi
 
-sh $workPath/addremote.sh $1
+sh "$workPath/addremote.sh" $1
 if [ $? -ne 0 ]; then
     echo "Fail to add remote for project $targetProject, exit"
     exit 1
 fi
 
-sh $workPath/init.sh $1
+sh "$workPath/init.sh" $1
 if [ $? -ne 0 ]; then
     echo "Fail to init project $targetProject, exit"
     exit 1
