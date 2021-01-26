@@ -1,11 +1,18 @@
 #!/bin/bash
+workPath=$(dirname $(readlink -f $0))
 targetProject=$1
+echo "cd $workPath"
+cd $workPath
+
 templateProject="docsy-example"
 
 if [ -z "$targetProject" ];then
-  echo "target project is not provided: use migrate.sh learning-***. exit."
+  echo "target project is not provided: use migrate.sh ***. exit."
   exit 1
 fi
+
+targetProject="learning-$1"
+projectPath="$workPath/$targetProject"
 
 if [ ! -d $targetProject ];then
   echo "$targetProject directory not found, exit"

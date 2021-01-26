@@ -1,12 +1,15 @@
 #!/bin/bash
+workPath=$(dirname $(readlink -f $0))
 targetProject=$1
+echo "cd $workPath"
+cd $workPath
 
 if [ -z "$targetProject" ];then
   echo "target project is not provided: use clone.sh ***. exit."
   exit 1
 fi
 targetProject="learning-$1"
-projectPath="/home/sky/work/code/learning2/$targetProject"
+projectPath="$workPath/$targetProject"
 
 if [ -d "$projectPath" ];then
   echo "$targetProject ($projectPath) exist"
@@ -19,13 +22,13 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-sh addremote.sh $1
+sh $workPath/addremote.sh $1
 if [ $? -ne 0 ]; then
     echo "Fail to add remote for project $targetProject, exit"
     exit 1
 fi
 
-sh init.sh $1
+sh $workPath/init.sh $1
 if [ $? -ne 0 ]; then
     echo "Fail to init project $targetProject, exit"
     exit 1

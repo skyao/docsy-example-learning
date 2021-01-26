@@ -1,12 +1,15 @@
 #!/bin/bash
+workPath=$(dirname $(readlink -f $0))
 targetProject=$1
+echo "cd $workPath"
+cd $workPath
 
 if [ -z "$targetProject" ];then
   echo "target project is not provided: use build-leaning.sh ***. exit."
   exit 1
 fi
 targetProject="learning-$1"
-projectPath="/home/sky/site/$targetProject"
+projectPath="$workPath/$targetProject"
 
 if [ ! -d "$projectPath" ];then
   echo "$targetProject ($projectPath) not found, exit"
@@ -14,7 +17,7 @@ if [ ! -d "$projectPath" ];then
 fi
 
 # init project if need 
-sh ./init.sh $1
+sh $workPath/init.sh $1
 if [ $? -ne 0 ]; then
     echo "Fail to init project $targetProject, exit"
     exit 1
