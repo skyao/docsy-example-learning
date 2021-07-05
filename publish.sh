@@ -30,6 +30,10 @@ fi
 cd $projectPath
 echo "cd $projectPath"
 
+# update to latest code
+git pull
+echo "Update by git pull"
+
 echo "Start to build $targetProject ..."
 rm -rf public 
 env HUGO_ENV="production" hugo --baseUrl="https://skyao.io/${targetProject}/"
