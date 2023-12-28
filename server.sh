@@ -20,13 +20,6 @@ if [ ! -d "$projectPath" ];then
   exit 1
 fi
 
-# init project if need 
-sh $workPath/init.sh $1
-if [ $? -ne 0 ]; then
-    echo "Fail to init project $targetProject, exit"
-    exit 1
-fi
-
 cd $projectPath
 echo "cd $projectPath"
 

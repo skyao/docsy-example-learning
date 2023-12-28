@@ -33,8 +33,4 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-sh "$workPath/init.sh" $1
-if [ $? -ne 0 ]; then
-    echo "Fail to init project $targetProject, exit"
-    exit 1
-fi
+echo "Done"

@@ -10,7 +10,7 @@ echo "cd $workPath"
 cd $workPath
 
 if [ -z "$targetProject" ];then
-  echo "target project is not provided: use build-leaning.sh ***. exit."
+  echo "target project is not provided: use addremote.sh ***. exit."
   exit 1
 fi
 targetProject="learning-$1"
@@ -23,7 +23,7 @@ fi
 
 cd $projectPath
 
-git remote add docsy git://github.com/skyao/docsy-example.git
+git remote add upstream git@github.com:skyao/docsy-example-learning.git
 git fetch --all
 
 

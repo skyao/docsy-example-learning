@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Begin to merge learning-clean branch of docsy-example repo"
+echo "Begin to merge learning-clean-2024 branch of docsy-example-learning repo"
 workPath=$(dirname $0)
 cd $workPath
 echo "work path is $workPath"
@@ -31,21 +31,21 @@ if [ $? -ne 0 ]; then
 fi
 echo "Success to do 'git pull'"
 
-echo "Begin to fetch remote repo by 'git fetch docsy'..."
-git fetch docsy
+echo "Begin to fetch remote repo by 'git fetch upstream'..."
+git fetch upstream
 if [ $? -ne 0 ]; then
-    echo "Fail to fetch git remote docsy, exit"
+    echo "Fail to fetch git remote upstream, exit"
     exit 1
 fi
-echo "success to do 'git fetch docsy'"
+echo "success to do 'git fetch upstream'"
 
-echo "Begin to merge remote repo by 'git merge docsy/learning-clean'..."
-git merge docsy/learning-clean
+echo "Begin to merge remote repo by 'git merge upstream/learning-clean-2024'..."
+git merge upstream/learning-clean-2024
 if [ $? -ne 0 ]; then
-    echo "Fail to merge learning-clean branch to project $targetProject, exit"
+    echo "Fail to merge learning-clean-2024 branch to project $targetProject, exit"
     exit 1
 fi
-echo "Success to do 'git merge docsy/learning-clean'"
+echo "Success to do 'git merge docsy/learning-clean-2024'"
 
 
 echo "Begin to push project by 'git push'..."
@@ -55,3 +55,5 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 echo "Success to do 'git push'"
+
+echo "Success to merge learning-clean-2024 branch"
