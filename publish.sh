@@ -12,7 +12,7 @@ if [ -z "$targetProject" ];then
   echo "target project is not provided: use publish.sh ***. exit."
   exit 1
 fi
-targetProject="learning-$1"
+targetProject="$1"
 projectPath="$workPath/$targetProject"
 
 if [ ! -d "$projectPath" ];then
