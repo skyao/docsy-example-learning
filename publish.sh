@@ -29,7 +29,7 @@ echo "Update by git pull"
 
 echo "Start to build $targetProject ..."
 rm -rf public 
-env HUGO_ENV="production" hugo --baseUrl="https://skyao.io/${targetProject}/"
+env HUGO_ENV="production" hugo --baseURL="https://skyao.io/${targetProject}/"
 if [ $? -ne 0 ]; then
     echo "Fail to build html content by hugo, exit"
     exit 1
